@@ -2,6 +2,7 @@
 const nextConfig = {
   output: 'export',
   trailingSlash: true,
+  distDir: 'out',
   images: {
     unoptimized: true,
     remotePatterns: [
@@ -15,6 +16,10 @@ const nextConfig = {
   },
   experimental: {
     optimizePackageImports: ['lucide-react', '@radix-ui/react-icons'],
+  },
+  // Disable server-side features for static export
+  generateBuildId: async () => {
+    return 'static-build'
   },
 }
 
