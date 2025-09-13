@@ -71,6 +71,18 @@ module.exports = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      backgroundImage: {
+        'gradient-primary': 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)',
+        'gradient-blue': 'linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%)',
+        'gradient-purple': 'linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%)',
+        'gradient-green': 'linear-gradient(135deg, #10b981 0%, #34d399 100%)',
+        'gradient-orange': 'linear-gradient(135deg, #f59e0b 0%, #ef4444 100%)',
+        'gradient-button': 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)',
+      },
+      boxShadow: {
+        'card': '0 2px 6px rgba(0, 0, 0, 0.05)',
+        'card-hover': '0 4px 12px rgba(0, 0, 0, 0.1)',
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],

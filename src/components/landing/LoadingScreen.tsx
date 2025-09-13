@@ -25,13 +25,13 @@ export function LoadingScreen({ onComplete }: LoadingScreenProps) {
       icon: Sparkles,
       title: "Intelligent Matching",
       description: "VYBR AI learns your preferences to recommend ideal housing options",
-      color: "from-purple-500 to-pink-500"
+      color: "from-purple-600 to-pink-500"
     },
     {
       icon: Users,
       title: "Roommate Compatibility",
       description: "Connect with like-minded students based on lifestyle and study habits",
-      color: "from-green-500 to-emerald-500"
+      color: "from-green-500 to-green-400"
     },
     {
       icon: Home,
@@ -67,35 +67,26 @@ export function LoadingScreen({ onComplete }: LoadingScreenProps) {
   }, [currentStep, steps.length]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary/5 via-purple-50 to-pink-50 flex items-center justify-center p-4 overflow-hidden relative">
-      {/* Animated background elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute top-1/2 left-1/2 w-48 h-48 bg-pink-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
-      </div>
-
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center py-8 px-4 overflow-hidden relative">
       <div className="relative z-10 w-full max-w-2xl text-center">
         {/* Logo */}
         <div className="flex justify-center mb-8">
-          <div className="w-20 h-20 bg-gradient-to-r from-primary to-purple-600 rounded-3xl flex items-center justify-center shadow-lg transform hover:scale-105 transition-transform">
+          <div className="w-20 h-20 bg-gradient-primary rounded-3xl flex items-center justify-center shadow-lg transform hover:scale-105 transition-transform">
             <span className="text-white font-bold text-3xl">V</span>
           </div>
         </div>
 
         {/* Main Title */}
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">
-          <span className="bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
-            VYBR
-          </span>
+        <h1 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: '#111827' }}>
+          VYBR
         </h1>
         
-        <p className="text-lg text-muted-foreground mb-12">
+        <p className="text-lg text-gray-600 mb-8">
           Your AI-powered student housing companion
         </p>
 
         {/* Feature Steps */}
-        <div className="space-y-8 mb-12">
+        <div className="space-y-5 mb-8">
           {steps.map((step, index) => {
             const Icon = step.icon;
             const isActive = index === currentStep;
@@ -104,42 +95,38 @@ export function LoadingScreen({ onComplete }: LoadingScreenProps) {
             return (
               <div
                 key={index}
-                className={`flex items-center gap-4 p-6 rounded-2xl transition-all duration-500 ${
+                className={`flex items-center gap-4 p-5 rounded-2xl transition-all duration-500 ${
                   isActive 
-                    ? 'bg-white/80 shadow-xl scale-105 border border-primary/20' 
+                    ? 'bg-white shadow-card-hover scale-105 border border-indigo-200' 
                     : isCompleted
-                    ? 'bg-white/60 shadow-md'
-                    : 'bg-white/30'
+                    ? 'bg-white shadow-card'
+                    : 'bg-white shadow-card'
                 }`}
               >
                 <div className={`w-16 h-16 rounded-2xl flex items-center justify-center transition-all duration-500 ${
                   isActive || isCompleted
-                    ? `bg-gradient-to-r ${step.color} shadow-lg`
-                    : 'bg-muted'
+                    ? `bg-gradient-to-r ${step.color} shadow-md`
+                    : 'bg-gray-200'
                 }`}>
                   {isCompleted ? (
                     <CheckCircle className="h-8 w-8 text-white" />
                   ) : (
-                    <Icon className={`h-8 w-8 ${isActive ? 'text-white' : 'text-muted-foreground'}`} />
+                    <Icon className={`h-8 w-8 ${isActive ? 'text-white' : 'text-gray-500'}`} />
                   )}
                 </div>
                 
                 <div className="flex-1 text-left">
-                  <h3 className={`font-semibold text-lg mb-1 transition-colors ${
-                    isActive ? 'text-foreground' : 'text-muted-foreground'
-                  }`}>
+                  <h3 className="font-bold text-lg mb-1 transition-colors" style={{ color: '#111827' }}>
                     {step.title}
                   </h3>
-                  <p className={`text-sm transition-colors ${
-                    isActive ? 'text-muted-foreground' : 'text-muted-foreground/70'
-                  }`}>
+                  <p className="text-sm transition-colors" style={{ color: '#4B5563' }}>
                     {step.description}
                   </p>
                 </div>
                 
                 {isActive && (
-                  <div className="flex items-center gap-2 text-primary">
-                    <div className="w-2 h-2 bg-primary rounded-full animate-ping"></div>
+                  <div className="flex items-center gap-2 text-indigo-600">
+                    <div className="w-2 h-2 bg-indigo-600 rounded-full animate-ping"></div>
                     <span className="text-sm font-medium">Loading...</span>
                   </div>
                 )}
@@ -151,7 +138,7 @@ export function LoadingScreen({ onComplete }: LoadingScreenProps) {
         {/* Progress Bar */}
         <div className="mb-8">
           <div className="flex justify-between items-center mb-2">
-            <span className="text-sm text-muted-foreground">Initializing your housing experience</span>
+            <span className="text-sm text-gray-600">Initializing your housing experience</span>
             <span className="text-sm font-medium text-primary">{Math.round(progress)}%</span>
           </div>
           <Progress value={progress} className="h-3 bg-white/50" />
@@ -160,23 +147,23 @@ export function LoadingScreen({ onComplete }: LoadingScreenProps) {
         {/* CTA */}
         {showCTA && (
           <div className="animate-in fade-in-0 slide-in-from-bottom-4 duration-700">
-            <div className="p-6 bg-white/80 rounded-2xl shadow-xl border border-primary/20 mb-6">
-              <h2 className="text-xl font-semibold mb-2">Ready to find your perfect student home?</h2>
-              <p className="text-muted-foreground mb-4">
+            <div className="p-6 bg-white rounded-2xl shadow-card border border-gray-200 mb-6">
+              <h2 className="text-xl font-bold mb-2" style={{ color: '#111827' }}>Ready to find your perfect student home?</h2>
+              <p className="mb-6" style={{ color: '#4B5563' }}>
                 Join thousands of students who've found their ideal housing with VYBR AI
               </p>
               
               <Button
                 onClick={onComplete}
                 size="lg"
-                className="w-full rounded-xl text-lg py-6 bg-gradient-to-r from-primary to-purple-600 hover:from-purple-600 hover:to-primary shadow-lg hover:shadow-xl transition-all duration-300"
+                className="w-full rounded-full text-lg py-4 bg-gradient-button hover:opacity-90 shadow-lg hover:shadow-xl transition-all duration-300 text-white font-semibold"
               >
                 Start Your Housing Journey
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </div>
             
-            <div className="flex justify-center gap-8 text-sm text-muted-foreground">
+            <div className="flex justify-center gap-8 text-sm text-gray-600">
               <div className="flex items-center gap-1">
                 <CheckCircle className="h-4 w-4 text-green-500" />
                 <span>1000+ Verified Properties</span>

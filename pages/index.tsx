@@ -343,7 +343,7 @@ export default function Home() {
           <title>VYBR Housing - Sign In</title>
           <meta name="description" content="Sign in to VYBR Housing to find your perfect student housing" />
         </Head>
-        <div className="min-h-screen bg-gradient-to-br from-primary/5 via-purple-50 to-pink-50 flex items-center justify-center p-4">
+        <div className="min-h-screen bg-gray-50 flex items-center justify-center py-8 px-4">
           <div className="w-full max-w-md">
             {authMode === 'login' ? (
               <LoginForm
@@ -379,7 +379,7 @@ export default function Home() {
           <title>VYBR Housing - Profile Setup</title>
           <meta name="description" content="Complete your profile to get personalized housing recommendations" />
         </Head>
-        <div className="min-h-screen bg-gradient-to-br from-primary/5 via-purple-50 to-pink-50 flex items-center justify-center p-4">
+        <div className="min-h-screen bg-gray-50 flex items-center justify-center py-8 px-4">
           <ProfileSetup onComplete={handleProfileComplete} />
         </div>
       </>
@@ -427,7 +427,7 @@ export default function Home() {
         <title>VYBR Housing - Find Your Perfect Student Housing</title>
         <meta name="description" content="Discover student housing, find roommates, and connect with your university community through VYBR Housing." />
       </Head>
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen bg-gray-50">
         {/* Desktop Header */}
         {!isMobile && (
           <Header

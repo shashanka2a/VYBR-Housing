@@ -21,19 +21,19 @@ export function LoginForm({ onLogin, onSwitchToSignup }: LoginFormProps) {
   };
 
   return (
-    <Card className="w-full max-w-md">
-      <CardHeader className="text-center">
-        <CardTitle className="text-2xl bg-gradient-to-r from-primary to-pink-500 bg-clip-text text-transparent">
+    <Card className="w-full max-w-md bg-white shadow-card rounded-2xl">
+      <CardHeader className="text-center p-6">
+        <CardTitle className="text-2xl font-bold text-gray-900">
           Welcome Back
         </CardTitle>
-        <CardDescription>
+        <CardDescription className="text-gray-600">
           Sign in to your VYBR account
         </CardDescription>
       </CardHeader>
-      <CardContent>
-        <form onSubmit={handleSubmit} className="space-y-4">
+      <CardContent className="p-6">
+        <form onSubmit={handleSubmit} className="space-y-6">
           <div className="space-y-2">
-            <Label htmlFor="email">Email</Label>
+            <Label htmlFor="email" className="text-gray-900 font-medium">Email</Label>
             <Input
               id="email"
               type="email"
@@ -41,11 +41,11 @@ export function LoginForm({ onLogin, onSwitchToSignup }: LoginFormProps) {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="rounded-xl"
+              className="rounded-xl border-gray-300 focus:border-indigo-500"
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="password">Password</Label>
+            <Label htmlFor="password" className="text-gray-900 font-medium">Password</Label>
             <Input
               id="password"
               type="password"
@@ -53,17 +53,17 @@ export function LoginForm({ onLogin, onSwitchToSignup }: LoginFormProps) {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              className="rounded-xl"
+              className="rounded-xl border-gray-300 focus:border-indigo-500"
             />
           </div>
-          <Button type="submit" className="w-full rounded-xl bg-gradient-to-r from-primary to-purple-600 hover:from-purple-600 hover:to-primary">
+          <Button type="submit" className="w-full rounded-full bg-gradient-button text-white font-semibold py-3">
             Sign In
           </Button>
           <div className="text-center">
             <button
               type="button"
               onClick={onSwitchToSignup}
-              className="text-sm text-primary hover:underline"
+              className="text-sm text-indigo-600 hover:underline"
             >
               Don't have an account? Sign up
             </button>

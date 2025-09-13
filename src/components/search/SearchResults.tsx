@@ -51,8 +51,8 @@ export function SearchResults({ properties, onPropertySelect, onToggleFilters }:
       {/* Header with controls */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h2 className="text-xl font-semibold">{properties.length} properties found</h2>
-          <p className="text-sm text-muted-foreground">
+          <h2 className="text-xl font-bold" style={{ color: '#111827' }}>{properties.length} properties found</h2>
+          <p className="text-sm text-gray-600">
             Showing available housing near your campus
           </p>
         </div>
@@ -62,7 +62,7 @@ export function SearchResults({ properties, onPropertySelect, onToggleFilters }:
             onClick={onToggleFilters}
             variant="outline"
             size="sm"
-            className="rounded-full"
+            className="rounded-full border-gray-300 text-gray-900 hover:bg-gray-50"
           >
             <SlidersHorizontal className="h-4 w-4 mr-2" />
             Filters
@@ -71,7 +71,7 @@ export function SearchResults({ properties, onPropertySelect, onToggleFilters }:
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value)}
-            className="px-3 py-2 text-sm border border-border rounded-full bg-background"
+            className="px-3 py-2 text-sm border border-gray-300 rounded-full bg-white text-gray-900 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
           >
             <option value="relevance">Sort by: Relevance</option>
             <option value="price-low">Price: Low to High</option>
@@ -80,12 +80,12 @@ export function SearchResults({ properties, onPropertySelect, onToggleFilters }:
             <option value="rating">Rating</option>
           </select>
           
-          <div className="flex border border-border rounded-full p-1">
+          <div className="flex border border-gray-300 rounded-full p-1">
             <Button
               onClick={() => setViewMode('grid')}
               variant={viewMode === 'grid' ? 'default' : 'ghost'}
               size="sm"
-              className="rounded-full px-3"
+              className={`rounded-full px-3 ${viewMode === 'grid' ? 'bg-indigo-600 text-white' : 'text-gray-600 hover:bg-gray-50'}`}
             >
               <Grid className="h-4 w-4" />
             </Button>
@@ -93,7 +93,7 @@ export function SearchResults({ properties, onPropertySelect, onToggleFilters }:
               onClick={() => setViewMode('list')}
               variant={viewMode === 'list' ? 'default' : 'ghost'}
               size="sm"
-              className="rounded-full px-3"
+              className={`rounded-full px-3 ${viewMode === 'list' ? 'bg-indigo-600 text-white' : 'text-gray-600 hover:bg-gray-50'}`}
             >
               <List className="h-4 w-4" />
             </Button>
@@ -104,8 +104,8 @@ export function SearchResults({ properties, onPropertySelect, onToggleFilters }:
       {/* Results */}
       {sortedProperties.length === 0 ? (
         <div className="text-center py-12">
-          <p className="text-muted-foreground">No properties match your criteria</p>
-          <Button onClick={onToggleFilters} variant="outline" className="mt-4 rounded-full">
+          <p className="text-gray-600">No properties match your criteria</p>
+          <Button onClick={onToggleFilters} variant="outline" className="mt-4 rounded-full border-gray-300 text-gray-900 hover:bg-gray-50">
             Adjust Filters
           </Button>
         </div>

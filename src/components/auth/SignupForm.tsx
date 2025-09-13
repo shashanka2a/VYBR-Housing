@@ -22,19 +22,19 @@ export function SignupForm({ onSignup, onSwitchToLogin }: SignupFormProps) {
   };
 
   return (
-    <Card className="w-full max-w-md">
-      <CardHeader className="text-center">
-        <CardTitle className="text-2xl bg-gradient-to-r from-primary to-pink-500 bg-clip-text text-transparent">
+    <Card className="w-full max-w-md bg-white shadow-card rounded-2xl">
+      <CardHeader className="text-center p-6">
+        <CardTitle className="text-2xl font-bold text-gray-900">
           Join VYBR
         </CardTitle>
-        <CardDescription>
+        <CardDescription className="text-gray-600">
           Create your account to find your perfect home
         </CardDescription>
       </CardHeader>
-      <CardContent>
-        <form onSubmit={handleSubmit} className="space-y-4">
+      <CardContent className="p-6">
+        <form onSubmit={handleSubmit} className="space-y-6">
           <div className="space-y-2">
-            <Label htmlFor="name">Full Name</Label>
+            <Label htmlFor="name" className="text-gray-900 font-medium">Full Name</Label>
             <Input
               id="name"
               type="text"
@@ -42,11 +42,11 @@ export function SignupForm({ onSignup, onSwitchToLogin }: SignupFormProps) {
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
-              className="rounded-xl"
+              className="rounded-xl border-gray-300 focus:border-indigo-500"
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="email">Email</Label>
+            <Label htmlFor="email" className="text-gray-900 font-medium">Email</Label>
             <Input
               id="email"
               type="email"
@@ -54,11 +54,11 @@ export function SignupForm({ onSignup, onSwitchToLogin }: SignupFormProps) {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="rounded-xl"
+              className="rounded-xl border-gray-300 focus:border-indigo-500"
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="password">Password</Label>
+            <Label htmlFor="password" className="text-gray-900 font-medium">Password</Label>
             <Input
               id="password"
               type="password"
@@ -66,17 +66,17 @@ export function SignupForm({ onSignup, onSwitchToLogin }: SignupFormProps) {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              className="rounded-xl"
+              className="rounded-xl border-gray-300 focus:border-indigo-500"
             />
           </div>
-          <Button type="submit" className="w-full rounded-xl bg-gradient-to-r from-primary to-purple-600 hover:from-purple-600 hover:to-primary">
+          <Button type="submit" className="w-full rounded-full bg-gradient-button text-white font-semibold py-3">
             Create Account
           </Button>
           <div className="text-center">
             <button
               type="button"
               onClick={onSwitchToLogin}
-              className="text-sm text-primary hover:underline"
+              className="text-sm text-indigo-600 hover:underline"
             >
               Already have an account? Sign in
             </button>

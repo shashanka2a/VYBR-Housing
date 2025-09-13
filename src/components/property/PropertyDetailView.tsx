@@ -87,15 +87,15 @@ export function PropertyDetailView({ property, onBack, onContact }: PropertyDeta
   };
 
   return (
-    <div className="min-h-screen bg-background pb-20 md:pb-0">
+    <div className="min-h-screen bg-gray-50 pb-20 md:pb-0">
       {/* Header */}
-      <div className="sticky top-0 z-40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b">
+      <div className="sticky top-0 z-40 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-gray-200">
         <div className="flex items-center justify-between p-4">
           <Button
             variant="ghost"
             size="sm"
             onClick={onBack}
-            className="rounded-full"
+            className="rounded-full text-gray-600 hover:text-gray-900"
           >
             <ArrowLeft className="h-4 w-4 mr-2" />
             Back
@@ -105,11 +105,11 @@ export function PropertyDetailView({ property, onBack, onContact }: PropertyDeta
               variant="ghost"
               size="sm"
               onClick={() => setIsFavorited(!isFavorited)}
-              className="rounded-full"
+              className="rounded-full text-gray-600 hover:text-gray-900"
             >
               <Heart className={`h-4 w-4 ${isFavorited ? 'fill-red-500 text-red-500' : ''}`} />
             </Button>
-            <Button variant="ghost" size="sm" className="rounded-full">
+            <Button variant="ghost" size="sm" className="rounded-full text-gray-600 hover:text-gray-900">
               <Share className="h-4 w-4" />
             </Button>
           </div>
@@ -160,34 +160,34 @@ export function PropertyDetailView({ property, onBack, onContact }: PropertyDeta
         {/* Property Header */}
         <div className="mb-6">
           <div className="flex justify-between items-start mb-3">
-            <h1 className="text-2xl font-bold">{property.title}</h1>
+            <h1 className="text-2xl font-bold" style={{ color: '#111827' }}>{property.title}</h1>
             <div className="text-right">
-              <div className="text-3xl font-bold text-primary">${property.price}</div>
-              <div className="text-sm text-muted-foreground">/month</div>
+              <div className="text-3xl font-bold text-indigo-600">${property.price}</div>
+              <div className="text-sm text-gray-600">/month</div>
             </div>
           </div>
 
           <div className="flex items-center gap-4 mb-4">
-            <div className="flex items-center gap-1 text-muted-foreground">
+            <div className="flex items-center gap-1 text-gray-600">
               <MapPin className="h-4 w-4" />
               <span>{property.location}</span>
             </div>
             <div className="flex items-center gap-1">
               <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-              <span className="font-medium">{property.rating}</span>
-              <span className="text-muted-foreground">({property.reviews} reviews)</span>
+              <span className="font-medium text-gray-900">{property.rating}</span>
+              <span className="text-gray-600">({property.reviews} reviews)</span>
             </div>
           </div>
 
-          <div className="flex flex-wrap gap-4 text-sm text-muted-foreground mb-4">
+          <div className="flex flex-wrap gap-4 text-sm text-gray-600 mb-4">
             <span>{property.bedrooms} bed • {property.bathrooms} bath</span>
             <span>{property.sqft} sqft</span>
             <span>{property.distance} miles from campus</span>
           </div>
 
           <div className="flex items-center gap-2 mb-6">
-            <Calendar className="h-4 w-4 text-primary" />
-            <span className="text-sm">Available {property.available}</span>
+            <Calendar className="h-4 w-4 text-indigo-600" />
+            <span className="text-sm text-gray-600">Available {property.available}</span>
           </div>
         </div>
 
@@ -197,7 +197,7 @@ export function PropertyDetailView({ property, onBack, onContact }: PropertyDeta
             <Button 
               onClick={() => setShowContact(true)}
               size="lg" 
-              className="rounded-xl bg-gradient-to-r from-primary to-purple-600"
+              className="rounded-full bg-gradient-button text-white font-semibold"
             >
               <MessageCircle className="h-4 w-4 mr-2" />
               Contact Property
@@ -206,7 +206,7 @@ export function PropertyDetailView({ property, onBack, onContact }: PropertyDeta
             <div className="flex gap-2">
               <Button 
                 size="lg" 
-                className="rounded-xl flex-1"
+                className="rounded-full flex-1 bg-white border border-gray-300 text-gray-900 hover:bg-gray-50"
                 onClick={() => window.open(`tel:${property.landlord.phone}`)}
               >
                 <Phone className="h-4 w-4 mr-2" />
@@ -215,7 +215,7 @@ export function PropertyDetailView({ property, onBack, onContact }: PropertyDeta
               <Button 
                 size="lg" 
                 variant="outline"
-                className="rounded-xl flex-1"
+                className="rounded-full flex-1 border-gray-300 text-gray-900 hover:bg-gray-50"
                 onClick={() => window.open(`mailto:${property.landlord.email}`)}
               >
                 <Mail className="h-4 w-4 mr-2" />
@@ -226,7 +226,7 @@ export function PropertyDetailView({ property, onBack, onContact }: PropertyDeta
           <Button 
             variant="outline" 
             size="lg" 
-            className="rounded-xl"
+            className="rounded-full border-gray-300 text-gray-900 hover:bg-gray-50"
           >
             Schedule Tour
           </Button>
@@ -240,7 +240,11 @@ export function PropertyDetailView({ property, onBack, onContact }: PropertyDeta
               variant={activeSection === section ? 'default' : 'outline'}
               size="sm"
               onClick={() => setActiveSection(section)}
-              className="rounded-full whitespace-nowrap"
+              className={`rounded-full whitespace-nowrap ${
+                activeSection === section 
+                  ? 'bg-gradient-button text-white' 
+                  : 'border-gray-300 text-gray-900 hover:bg-gray-50'
+              }`}
             >
               {section.charAt(0).toUpperCase() + section.slice(1)}
             </Button>
@@ -251,58 +255,58 @@ export function PropertyDetailView({ property, onBack, onContact }: PropertyDeta
         {activeSection === 'overview' && (
           <div className="space-y-6">
             {/* Description */}
-            <Card>
-              <CardHeader>
-                <CardTitle>About This Property</CardTitle>
+            <Card className="bg-white shadow-card rounded-2xl">
+              <CardHeader className="p-6">
+                <CardTitle className="font-bold" style={{ color: '#111827' }}>About This Property</CardTitle>
               </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground leading-relaxed">
+              <CardContent className="p-6 pt-0">
+                <p className="text-gray-600 leading-relaxed">
                   {property.description}
                 </p>
               </CardContent>
             </Card>
 
             {/* Lease Details */}
-            <Card>
-              <CardHeader>
-                <CardTitle>Lease Information</CardTitle>
+            <Card className="bg-white shadow-card rounded-2xl">
+              <CardHeader className="p-6">
+                <CardTitle className="font-bold" style={{ color: '#111827' }}>Lease Information</CardTitle>
               </CardHeader>
-              <CardContent className="space-y-4">
+              <CardContent className="p-6 pt-0 space-y-4">
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <span className="text-sm text-muted-foreground">Lease Start</span>
-                    <p className="font-medium">{property.leaseStart}</p>
+                    <span className="text-sm text-gray-600">Lease Start</span>
+                    <p className="font-medium text-gray-900">{property.leaseStart}</p>
                   </div>
                   <div>
-                    <span className="text-sm text-muted-foreground">Duration</span>
-                    <p className="font-medium">{property.leaseDuration}</p>
+                    <span className="text-sm text-gray-600">Duration</span>
+                    <p className="font-medium text-gray-900">{property.leaseDuration}</p>
                   </div>
                   <div>
-                    <span className="text-sm text-muted-foreground">Security Deposit</span>
-                    <p className="font-medium">${property.deposit}</p>
+                    <span className="text-sm text-gray-600">Security Deposit</span>
+                    <p className="font-medium text-gray-900">${property.deposit}</p>
                   </div>
                   <div>
-                    <span className="text-sm text-muted-foreground">Utilities</span>
-                    <p className="font-medium">{property.utilities.join(', ')}</p>
+                    <span className="text-sm text-gray-600">Utilities</span>
+                    <p className="font-medium text-gray-900">{property.utilities.join(', ')}</p>
                   </div>
                 </div>
               </CardContent>
             </Card>
 
             {/* Landlord Info */}
-            <Card>
-              <CardHeader>
-                <CardTitle>Landlord Contact</CardTitle>
+            <Card className="bg-white shadow-card rounded-2xl">
+              <CardHeader className="p-6">
+                <CardTitle className="font-bold" style={{ color: '#111827' }}>Landlord Contact</CardTitle>
               </CardHeader>
-              <CardContent>
+              <CardContent className="p-6 pt-0">
                 <div className="flex items-center gap-3 mb-4">
                   <Avatar className="h-12 w-12">
                     <AvatarImage src={property.landlord.avatar} alt={property.landlord.name} />
-                    <AvatarFallback>{property.landlord.name.charAt(0)}</AvatarFallback>
+                    <AvatarFallback className="bg-gray-200 text-gray-600">{property.landlord.name.charAt(0)}</AvatarFallback>
                   </Avatar>
                   <div>
-                    <h4 className="font-medium">{property.landlord.name}</h4>
-                    <p className="text-sm text-muted-foreground">
+                    <h4 className="font-bold text-gray-900">{property.landlord.name}</h4>
+                    <p className="text-sm text-gray-600">
                       Typically responds in {property.landlord.responseTime}
                     </p>
                   </div>
@@ -312,7 +316,7 @@ export function PropertyDetailView({ property, onBack, onContact }: PropertyDeta
                     <Button 
                       variant="outline" 
                       size="sm" 
-                      className="rounded-full"
+                      className="rounded-full border-gray-300 text-gray-900 hover:bg-gray-50"
                       onClick={() => window.open(`tel:${property.landlord.phone}`)}
                     >
                       <Phone className="h-4 w-4 mr-2" />
@@ -321,7 +325,7 @@ export function PropertyDetailView({ property, onBack, onContact }: PropertyDeta
                     <Button 
                       variant="outline" 
                       size="sm" 
-                      className="rounded-full"
+                      className="rounded-full border-gray-300 text-gray-900 hover:bg-gray-50"
                       onClick={() => window.open(`mailto:${property.landlord.email}`)}
                     >
                       <Mail className="h-4 w-4 mr-2" />
@@ -335,18 +339,18 @@ export function PropertyDetailView({ property, onBack, onContact }: PropertyDeta
         )}
 
         {activeSection === 'amenities' && (
-          <Card>
-            <CardHeader>
-              <CardTitle>Amenities & Features</CardTitle>
+          <Card className="bg-white shadow-card rounded-2xl">
+            <CardHeader className="p-6">
+              <CardTitle className="text-gray-900 font-bold">Amenities & Features</CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="p-6 pt-0">
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                 {property.amenities.map((amenity) => {
                   const Icon = amenityIcons[amenity] || Wifi;
                   return (
-                    <div key={amenity} className="flex items-center gap-3 p-3 rounded-xl bg-muted/50">
-                      <Icon className="h-5 w-5 text-primary" />
-                      <span className="font-medium">{amenity}</span>
+                    <div key={amenity} className="flex items-center gap-3 p-3 rounded-xl bg-gray-50">
+                      <Icon className="h-5 w-5 text-indigo-600" />
+                      <span className="font-medium text-gray-900">{amenity}</span>
                     </div>
                   );
                 })}
@@ -359,31 +363,31 @@ export function PropertyDetailView({ property, onBack, onContact }: PropertyDeta
           <div className="space-y-4">
             {property.roommates ? (
               property.roommates.map((roommate, index) => (
-                <Card key={index}>
+                <Card key={index} className="bg-white shadow-card rounded-2xl">
                   <CardContent className="p-6">
                     <div className="flex items-start gap-4">
                       <Avatar className="h-16 w-16">
                         <AvatarImage src={roommate.avatar} alt={roommate.name} />
-                        <AvatarFallback>{roommate.name.charAt(0)}</AvatarFallback>
+                        <AvatarFallback className="bg-gray-200 text-gray-600">{roommate.name.charAt(0)}</AvatarFallback>
                       </Avatar>
                       <div className="flex-1">
                         <div className="flex items-center gap-2 mb-2">
-                          <h4 className="font-semibold">{roommate.name}</h4>
-                          <Badge variant="secondary">{roommate.age} years old</Badge>
+                          <h4 className="font-bold text-gray-900">{roommate.name}</h4>
+                          <Badge variant="secondary" className="bg-gray-100 text-gray-700">{roommate.age} years old</Badge>
                         </div>
-                        <p className="text-sm text-primary mb-2">{roommate.major}</p>
-                        <p className="text-sm text-muted-foreground">{roommate.bio}</p>
+                        <p className="text-sm text-indigo-600 mb-2">{roommate.major}</p>
+                        <p className="text-sm text-gray-600">{roommate.bio}</p>
                       </div>
                     </div>
                   </CardContent>
                 </Card>
               ))
             ) : (
-              <Card>
+              <Card className="bg-white shadow-card rounded-2xl">
                 <CardContent className="p-6 text-center">
-                  <Users className="h-12 w-12 mx-auto text-muted-foreground mb-4" />
-                  <h3 className="font-medium mb-2">No Current Roommates</h3>
-                  <p className="text-sm text-muted-foreground">
+                  <Users className="h-12 w-12 mx-auto text-gray-400 mb-4" />
+                  <h3 className="font-bold text-gray-900 mb-2">No Current Roommates</h3>
+                  <p className="text-sm text-gray-600">
                     Be the first to move in and help find compatible roommates!
                   </p>
                 </CardContent>
@@ -393,27 +397,27 @@ export function PropertyDetailView({ property, onBack, onContact }: PropertyDeta
         )}
 
         {activeSection === 'floorplan' && (
-          <Card>
-            <CardHeader>
-              <CardTitle>Floor Plan</CardTitle>
+          <Card className="bg-white shadow-card rounded-2xl">
+            <CardHeader className="p-6">
+              <CardTitle className="text-gray-900 font-bold">Floor Plan</CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="p-6 pt-0">
               {property.floorPlan ? (
                 <div className="aspect-video rounded-xl overflow-hidden">
                   <ImageWithFallback
                     src={property.floorPlan}
                     alt="Floor plan"
-                    className="w-full h-full object-contain bg-muted"
+                    className="w-full h-full object-contain bg-gray-50"
                   />
                 </div>
               ) : (
-                <div className="aspect-video rounded-xl bg-muted flex items-center justify-center">
+                <div className="aspect-video rounded-xl bg-gray-50 flex items-center justify-center">
                   <div className="text-center">
-                    <div className="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-xl flex items-center justify-center">
-                      <Home className="h-8 w-8 text-primary" />
+                    <div className="w-16 h-16 mx-auto mb-4 bg-indigo-100 rounded-xl flex items-center justify-center">
+                      <Home className="h-8 w-8 text-indigo-600" />
                     </div>
-                    <h3 className="font-medium mb-2">Floor Plan Coming Soon</h3>
-                    <p className="text-sm text-muted-foreground">
+                    <h3 className="font-bold text-gray-900 mb-2">Floor Plan Coming Soon</h3>
+                    <p className="text-sm text-gray-600">
                       Contact the landlord for detailed floor plan information
                     </p>
                   </div>

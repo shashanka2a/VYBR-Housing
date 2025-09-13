@@ -28,10 +28,10 @@ export function Header({ user, onSearch, onLogout }: HeaderProps) {
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center space-x-2">
-          <div className="w-8 h-8 bg-gradient-to-r from-primary to-purple-600 rounded-lg flex items-center justify-center">
+          <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
             <span className="text-white font-bold text-sm">V</span>
           </div>
-          <span className="text-xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
+          <span className="text-xl font-bold" style={{ color: '#111827' }}>
             VYBR
           </span>
         </div>
@@ -93,7 +93,7 @@ export function Header({ user, onSearch, onLogout }: HeaderProps) {
               <Button variant="ghost" size="sm" className="rounded-full">
                 Sign In
               </Button>
-              <Button size="sm" className="rounded-full bg-gradient-to-r from-primary to-purple-600">
+              <Button size="sm" className="rounded-full bg-gradient-button text-white">
                 Join VYBR
               </Button>
             </div>

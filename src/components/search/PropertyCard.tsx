@@ -43,7 +43,7 @@ export function PropertyCard({ property, viewMode = 'grid', onSelect }: Property
 
   if (viewMode === 'list') {
     return (
-      <Card className="w-full hover:shadow-lg transition-shadow cursor-pointer" onClick={() => onSelect(property.id)}>
+      <Card className="w-full bg-white shadow-card hover:shadow-card-hover transition-shadow cursor-pointer rounded-2xl" onClick={() => onSelect(property.id)}>
         <CardContent className="p-0">
           <div className="flex">
             <div className="relative w-64 h-48 flex-shrink-0">
@@ -86,14 +86,14 @@ export function PropertyCard({ property, viewMode = 'grid', onSelect }: Property
             </div>
             <div className="flex-1 p-6">
               <div className="flex justify-between items-start mb-2">
-                <h3 className="text-lg font-semibold">{property.title}</h3>
+                <h3 className="text-lg font-bold text-gray-900">{property.title}</h3>
                 <div className="text-right">
-                  <div className="text-2xl font-bold text-primary">${property.price}</div>
-                  <div className="text-sm text-muted-foreground">/month</div>
+                  <div className="text-2xl font-bold text-indigo-600">${property.price}</div>
+                  <div className="text-sm text-gray-600">/month</div>
                 </div>
               </div>
               
-              <div className="flex items-center gap-2 text-sm text-muted-foreground mb-3">
+              <div className="flex items-center gap-2 text-sm text-gray-600 mb-3">
                 <MapPin className="h-4 w-4" />
                 <span>{property.location}</span>
                 <span>•</span>
@@ -101,11 +101,11 @@ export function PropertyCard({ property, viewMode = 'grid', onSelect }: Property
               </div>
 
               <div className="flex items-center gap-4 mb-3">
-                <span className="text-sm">{property.bedrooms} bed • {property.bathrooms} bath</span>
+                <span className="text-sm text-gray-600">{property.bedrooms} bed • {property.bathrooms} bath</span>
                 <div className="flex items-center gap-1">
                   <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                  <span className="text-sm font-medium">{property.rating}</span>
-                  <span className="text-sm text-muted-foreground">({property.reviews} reviews)</span>
+                  <span className="text-sm font-medium text-gray-900">{property.rating}</span>
+                  <span className="text-sm text-gray-600">({property.reviews} reviews)</span>
                 </div>
               </div>
 
@@ -124,8 +124,8 @@ export function PropertyCard({ property, viewMode = 'grid', onSelect }: Property
 
               {property.roommates && (
                 <div className="flex items-center gap-2 mb-4">
-                  <Users className="h-4 w-4 text-primary" />
-                  <span className="text-sm">Current roommates:</span>
+                  <Users className="h-4 w-4 text-indigo-600" />
+                  <span className="text-sm text-gray-600">Current roommates:</span>
                   <div className="flex gap-2">
                     {property.roommates.map((roommate, index) => (
                       <Badge key={index} variant="outline" className="text-xs rounded-full">
@@ -136,7 +136,7 @@ export function PropertyCard({ property, viewMode = 'grid', onSelect }: Property
                 </div>
               )}
 
-              <div className="text-sm text-muted-foreground">
+              <div className="text-sm text-gray-600">
                 Available {property.available}
               </div>
             </div>
@@ -147,7 +147,7 @@ export function PropertyCard({ property, viewMode = 'grid', onSelect }: Property
   }
 
   return (
-    <Card className="w-full hover:shadow-lg transition-shadow cursor-pointer" onClick={() => onSelect(property.id)}>
+    <Card className="w-full bg-white shadow-card hover:shadow-card-hover transition-shadow cursor-pointer rounded-2xl" onClick={() => onSelect(property.id)}>
       <CardContent className="p-0">
         <div className="relative">
           <ImageWithFallback
@@ -198,25 +198,25 @@ export function PropertyCard({ property, viewMode = 'grid', onSelect }: Property
           </div>
         </div>
         
-        <div className="p-4">
+        <div className="p-5">
           <div className="flex justify-between items-start mb-2">
-            <h3 className="font-semibold truncate">{property.title}</h3>
+            <h3 className="font-bold text-gray-900 truncate">{property.title}</h3>
             <div className="text-right">
-              <div className="text-xl font-bold text-primary">${property.price}</div>
-              <div className="text-xs text-muted-foreground">/month</div>
+              <div className="text-xl font-bold text-indigo-600">${property.price}</div>
+              <div className="text-xs text-gray-600">/month</div>
             </div>
           </div>
           
-          <div className="flex items-center gap-1 text-sm text-muted-foreground mb-2">
+          <div className="flex items-center gap-1 text-sm text-gray-600 mb-2">
             <MapPin className="h-4 w-4" />
             <span className="truncate">{property.location}</span>
           </div>
 
           <div className="flex items-center justify-between mb-3">
-            <span className="text-sm">{property.bedrooms} bed • {property.bathrooms} bath</span>
+            <span className="text-sm text-gray-600">{property.bedrooms} bed • {property.bathrooms} bath</span>
             <div className="flex items-center gap-1">
               <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-              <span className="text-sm font-medium">{property.rating}</span>
+              <span className="text-sm font-medium text-gray-900">{property.rating}</span>
             </div>
           </div>
 
@@ -235,14 +235,14 @@ export function PropertyCard({ property, viewMode = 'grid', onSelect }: Property
 
           {property.roommates && (
             <div className="flex items-center gap-1 mb-3">
-              <Users className="h-4 w-4 text-primary" />
-              <span className="text-xs text-muted-foreground">
+              <Users className="h-4 w-4 text-indigo-600" />
+              <span className="text-xs text-gray-600">
                 {property.roommates.length} roommate{property.roommates.length > 1 ? 's' : ''}
               </span>
             </div>
           )}
 
-          <div className="text-xs text-muted-foreground">
+          <div className="text-xs text-gray-600">
             Available {property.available}
           </div>
         </div>
